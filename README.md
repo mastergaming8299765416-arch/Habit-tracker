@@ -71,17 +71,41 @@ If you want a different secret path, rename the
 `app/secure-admin-x7q9` folder and update the `ADMIN_PATH` constant at the
 top of `middleware.js` to match.
 
-## 5. Enable Facebook login (optional)
+## 5. Enable Google and Facebook login (optional)
 
-Email/password works out of the box. To also let people sign in with
-Facebook:
+Email/password works out of the box. The app already has "Continue with
+Google" and "Continue with Facebook" buttons built in — they just need to
+be switched on in Supabase.
+
+### Google
+
+1. Go to [console.cloud.google.com](https://console.cloud.google.com/) →
+   create a new project (or use an existing one).
+2. Go to **APIs & Services → OAuth consent screen**. Choose **External**,
+   fill in an app name and your email, and save (you don't need to submit
+   for verification for personal/friend use — just add yourself and your
+   friends as test users if it stays in "Testing" mode, or publish it for
+   anyone to use without that limit).
+3. Go to **APIs & Services → Credentials → Create Credentials → OAuth
+   client ID**. Choose **Web application**.
+4. Under **Authorized redirect URIs**, add:
+   ```
+   https://YOUR-PROJECT.supabase.co/auth/v1/callback
+   ```
+5. Click Create — you'll get a **Client ID** and **Client Secret**.
+6. In Supabase, go to **Authentication → Providers → Google**, toggle it
+   on, paste in the Client ID and Client Secret, and save.
+
+Google login works immediately for any user, even while your Google
+Cloud app is in "Testing" mode, as long as you've added their email as a
+test user (or published the app).
+
+### Facebook
 
 1. Go to [developers.facebook.com](https://developers.facebook.com/apps) →
    **Create App** → choose **Consumer** as the app type.
 2. In your new app, add the **Facebook Login** product.
-3. Under Facebook Login → Settings, add this as a **Valid OAuth Redirect URI**
-   (get the exact value from Supabase in the next step — it's your Supabase
-   project URL + `/auth/v1/callback`):
+3. Under Facebook Login → Settings, add this as a **Valid OAuth Redirect URI**:
    ```
    https://YOUR-PROJECT.supabase.co/auth/v1/callback
    ```
@@ -94,8 +118,8 @@ Facebook:
    it to everyone, submit the app for Facebook's App Review (needed for the
    `public_profile` and `email` permissions) and switch it to "Live" mode.
 
-The "Continue with Facebook" button already in the app will start working
-as soon as the provider is turned on in Supabase — no code changes needed.
+Both buttons already in the app will start working as soon as their
+provider is turned on in Supabase — no code changes needed.
 
 **Note on Instagram:** Meta doesn't offer a general-purpose "Login with
 Instagram" for consumer apps — Instagram's login is tied to Facebook

@@ -102,11 +102,11 @@ export default function ManageHabitsPage() {
       return;
     }
 
-    const toInsert = prevHabits.map((h) => ({
+    const toInsert = prevHabits.map((h, i) => ({
       user_id: userId,
       name: h.name,
       month: monthKey,
-      position: h.position,
+      position: habits.length + i,
     }));
 
     const { data, error } = await supabase.from("habits").insert(toInsert).select();

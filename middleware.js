@@ -2,23 +2,29 @@ import { NextResponse } from "next/server";
 import { updateSession } from "./lib/supabase/middleware";
 
 const ADMIN_PATH = "/secure-admin-x7q9";
+const ADMIN_DASHBOARD_PATH = `${ADMIN_PATH}/dashboard`;
 
 export async function middleware(request) {
   const { response, user, supabase } = await updateSession(request);
   const path = request.nextUrl.pathname;
 
-  const isAdminArea = path.startsWith(ADMIN_PATH);
+  // Only the /dashboard sub-route needs auth — the bare ADMIN_PATH is the
+  // login form itself and must stay reachable while logged out, or a
+  // logged-out visitor gets redirected to it and immediately redirected
+  // to it again, forever.
+  const isAdminDashboard = path.startsWith(ADMIN_DASHBOARD_PATH);
   const isUserArea = path.startsWith("/dashboard");
 
   // Not logged in and hitting a protected area -> bounce to the right login
-  if (!user && (isUserArea || isAdminArea)) {
-    const loginUrl = new URL(isAdminArea ? ADMIN_PATH : "/login", request.url);
+  if (!user && (isUserArea || isAdminDashboard)) {
+    const loginUrl = new URL(isUserArea ? "/login" : ADMIN_PATH, request.url);
     return NextResponse.redirect(loginUrl);
   }
 
-  // Logged in: check role for admin area. Regular users get redirected
-  // to their own dashboard with no indication the admin area exists.
-  if (user && isAdminArea) {
+  // Logged in: check role for the admin dashboard. Regular users get
+  // redirected to their own dashboard with no indication the admin area
+  // exists.
+  if (user && isAdminDashboard) {
     const { data: profile } = await supabase
       .from("profiles")
       .select("role")
