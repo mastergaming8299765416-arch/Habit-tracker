@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import OAuthButtons from "@/components/OAuthButtons";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -69,6 +70,8 @@ export default function LoginPage() {
             {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
+
+        <OAuthButtons />
 
         <div className="flex justify-between mt-4 text-sm">
           <Link href="/forgot-password" className="text-sage hover:underline">Forgot password?</Link>

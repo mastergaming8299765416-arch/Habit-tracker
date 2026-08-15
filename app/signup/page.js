@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import OAuthButtons from "@/components/OAuthButtons";
 
 export default function SignupPage() {
   const supabase = createClient();
@@ -88,6 +89,8 @@ export default function SignupPage() {
             {loading ? "Creating account..." : "Sign Up"}
           </button>
         </form>
+
+        <OAuthButtons />
 
         <p className="text-center mt-4 text-sm">
           Already have an account? <Link href="/login" className="text-sage hover:underline">Sign in</Link>

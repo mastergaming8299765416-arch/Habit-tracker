@@ -71,7 +71,39 @@ If you want a different secret path, rename the
 `app/secure-admin-x7q9` folder and update the `ADMIN_PATH` constant at the
 top of `middleware.js` to match.
 
-## 4. Deploy to Vercel
+## 5. Enable Facebook login (optional)
+
+Email/password works out of the box. To also let people sign in with
+Facebook:
+
+1. Go to [developers.facebook.com](https://developers.facebook.com/apps) →
+   **Create App** → choose **Consumer** as the app type.
+2. In your new app, add the **Facebook Login** product.
+3. Under Facebook Login → Settings, add this as a **Valid OAuth Redirect URI**
+   (get the exact value from Supabase in the next step — it's your Supabase
+   project URL + `/auth/v1/callback`):
+   ```
+   https://YOUR-PROJECT.supabase.co/auth/v1/callback
+   ```
+4. In your Facebook app's **Settings → Basic**, copy the **App ID** and
+   **App Secret**.
+5. In Supabase, go to **Authentication → Providers → Facebook**, toggle it
+   on, and paste in the App ID and App Secret. Save.
+6. While your Facebook app is in "Development" mode, only accounts you've
+   added as testers/admins in the Facebook app can log in with it. To open
+   it to everyone, submit the app for Facebook's App Review (needed for the
+   `public_profile` and `email` permissions) and switch it to "Live" mode.
+
+The "Continue with Facebook" button already in the app will start working
+as soon as the provider is turned on in Supabase — no code changes needed.
+
+**Note on Instagram:** Meta doesn't offer a general-purpose "Login with
+Instagram" for consumer apps — Instagram's login is tied to Facebook
+Business/Creator accounts and the Graph API, meant for content and ads
+tooling rather than app sign-in. Facebook login (above) covers the same
+Meta account system for your users.
+
+## 6. Deploy to Vercel
 
 1. Push this project to a GitHub repo.
 2. Go to [vercel.com](https://vercel.com) → **Add New Project** → import
