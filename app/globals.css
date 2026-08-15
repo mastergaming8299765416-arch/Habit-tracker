@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #FBF7F0;
+  color: #2E2A26;
+}
+
+.cell {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1.5px solid #D8CFC0;
+  cursor: pointer;
+  font-size: 14px;
+  transition: transform 0.08s ease;
+  user-select: none;
+}
+.cell:active {
+  transform: scale(0.9);
+}
+.cell-done {
+  background-color: #8FA98B;
+  border-color: #75946f;
+  color: white;
+}
+.cell-partial {
+  background-color: #E8C97A;
+  border-color: #cdae5f;
+  color: white;
+}
+.cell-empty {
+  background-color: #ffffff;
+}
