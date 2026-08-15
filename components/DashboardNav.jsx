@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 export default function DashboardNav() {
   const pathname = usePathname();
@@ -37,6 +38,7 @@ export default function DashboardNav() {
         <button onClick={handleLogout} className="text-ink/60 hover:text-rose">
           Log out
         </button>
+        <ThemeSwitcher compact />
       </div>
     </nav>
   );

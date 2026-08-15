@@ -7,13 +7,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cream: "#FBF7F0",
-        ink: "#2E2A26",
-        sage: "#8FA98B",
-        sagelight: "#E4ECE2",
-        rose: "#D98E8E",
-        roselight: "#F6E4E4",
-        sand: "#E8DFCF",
+        cream: "rgb(var(--bg) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        sand: "rgb(var(--border) / <alpha-value>)",
+        ink: "rgb(var(--ink) / <alpha-value>)",
+        sage: "rgb(var(--accent) / <alpha-value>)",
+        sagelight: "rgb(var(--accent-light) / <alpha-value>)",
+        accentLight: "rgb(var(--accent-light) / <alpha-value>)",
+        rose: "rgb(var(--danger) / <alpha-value>)",
+        roselight: "rgb(var(--danger-light) / <alpha-value>)",
       },
       fontFamily: {
         serif: ["Georgia", "Cambria", "serif"],

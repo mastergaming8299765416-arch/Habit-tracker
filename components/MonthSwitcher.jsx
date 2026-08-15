@@ -18,7 +18,7 @@ export default function MonthSwitcher({ year, month, onChange }) {
     <div className="flex items-center gap-3">
       <button
         onClick={() => shift(-1)}
-        className="w-8 h-8 rounded-full border border-sand bg-white hover:bg-sagelight flex items-center justify-center"
+        className="w-8 h-8 rounded-full border border-sand bg-surface hover:bg-sagelight flex items-center justify-center"
         aria-label="Previous month"
       >
         ‹
@@ -28,7 +28,7 @@ export default function MonthSwitcher({ year, month, onChange }) {
       </div>
       <button
         onClick={() => shift(1)}
-        className="w-8 h-8 rounded-full border border-sand bg-white hover:bg-sagelight flex items-center justify-center"
+        className="w-8 h-8 rounded-full border border-sand bg-surface hover:bg-sagelight flex items-center justify-center"
         aria-label="Next month"
       >
         ›

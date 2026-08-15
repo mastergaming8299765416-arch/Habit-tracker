@@ -94,7 +94,7 @@ export default function StatsPage() {
             longestStreak={longestOverall}
           />
 
-          <div className="bg-white border border-sand rounded-2xl p-4 mt-6">
+          <div className="bg-surface border border-sand rounded-2xl p-4 mt-6">
             <h3 className="font-serif text-lg mb-3">Per-Habit Breakdown</h3>
             {habitStats.length === 0 ? (
               <p className="text-sm text-ink/50">No habits tracked this month.</p>

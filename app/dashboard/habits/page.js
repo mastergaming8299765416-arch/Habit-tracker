@@ -123,7 +123,7 @@ export default function ManageHabitsPage() {
         <MonthSwitcher year={year} month={month} onChange={(y, m) => { setYear(y); setMonth(m); }} />
         <button
           onClick={carryOverFromPreviousMonth}
-          className="text-sm border border-sand rounded-lg px-3 py-1.5 bg-white hover:bg-sagelight"
+          className="text-sm border border-sand rounded-lg px-3 py-1.5 bg-surface hover:bg-sagelight"
         >
           Carry over from previous month
         </button>
@@ -150,7 +150,7 @@ export default function ManageHabitsPage() {
       ) : (
         <ul className="space-y-2">
           {habits.map((h, i) => (
-            <li key={h.id} className="flex items-center gap-2 bg-white border border-sand rounded-lg px-3 py-2">
+            <li key={h.id} className="flex items-center gap-2 bg-surface border border-sand rounded-lg px-3 py-2">
               <div className="flex flex-col">
                 <button onClick={() => move(h.id, -1)} disabled={i === 0} className="text-ink/40 hover:text-ink disabled:opacity-20 leading-none">▲</button>
                 <button onClick={() => move(h.id, 1)} disabled={i === habits.length - 1} className="text-ink/40 hover:text-ink disabled:opacity-20 leading-none">▼</button>

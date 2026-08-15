@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 export default function SignupPage() {
   const supabase = createClient();
@@ -36,7 +37,7 @@ export default function SignupPage() {
   if (done) {
     return (
       <div className="min-h-screen flex items-center justify-center px-4">
-        <div className="w-full max-w-sm bg-white border border-sand rounded-2xl shadow-sm p-8 text-center">
+        <div className="w-full max-w-sm bg-surface border border-sand rounded-2xl shadow-sm p-8 text-center">
           <h1 className="text-xl font-serif mb-2">Check your inbox</h1>
           <p className="text-sm text-ink/70">We sent a confirmation link to {email}. Confirm your email, then sign in.</p>
           <Link href="/login" className="inline-block mt-6 text-sage hover:underline text-sm">Back to login</Link>
@@ -46,8 +47,11 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="w-full max-w-sm bg-white border border-sand rounded-2xl shadow-sm p-8">
+    <div className="min-h-screen flex items-center justify-center px-4 relative">
+      <div className="absolute top-4 right-4">
+        <ThemeSwitcher />
+      </div>
+      <div className="w-full max-w-sm bg-surface border border-sand rounded-2xl shadow-sm p-8">
         <h1 className="text-2xl font-serif text-center mb-1">Create your account</h1>
         <p className="text-center text-sm text-ink/60 mb-6">Start tracking your habits today.</p>
 

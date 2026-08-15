@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -28,8 +29,11 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="w-full max-w-sm bg-white border border-sand rounded-2xl shadow-sm p-8">
+    <div className="min-h-screen flex items-center justify-center px-4 relative">
+      <div className="absolute top-4 right-4">
+        <ThemeSwitcher />
+      </div>
+      <div className="w-full max-w-sm bg-surface border border-sand rounded-2xl shadow-sm p-8">
         <h1 className="text-2xl font-serif text-center mb-1">Habit Tracker</h1>
         <p className="text-center text-sm text-ink/60 mb-6">Small habits today, extraordinary results tomorrow.</p>
 

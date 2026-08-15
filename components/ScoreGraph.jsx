@@ -4,7 +4,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 export default function ScoreGraph({ scores, maxScore }) {
   return (
-    <div className="bg-white border border-sand rounded-2xl p-4">
+    <div className="bg-surface border border-sand rounded-2xl p-4">
       <h3 className="font-serif text-lg mb-2">Daily Habits Score</h3>
       <ResponsiveContainer width="100%" height={260}>
         <LineChart data={scores} margin={{ top: 10, right: 20, left: -10, bottom: 0 }}>

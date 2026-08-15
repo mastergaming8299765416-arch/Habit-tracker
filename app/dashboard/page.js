@@ -111,7 +111,7 @@ export default function DashboardPage() {
         <button
           onClick={handleExport}
           disabled={habits.length === 0}
-          className="text-sm border border-sand rounded-lg px-3 py-1.5 bg-white hover:bg-sagelight disabled:opacity-40"
+          className="text-sm border border-sand rounded-lg px-3 py-1.5 bg-surface hover:bg-sagelight disabled:opacity-40"
         >
           Export CSV
         </button>
@@ -121,7 +121,7 @@ export default function DashboardPage() {
         <div className="text-center py-16 text-ink/50">Loading...</div>
       ) : (
         <>
-          <div className="bg-white border border-sand rounded-2xl p-4 mb-6">
+          <div className="bg-surface border border-sand rounded-2xl p-4 mb-6">
             <HabitGrid
               habits={habits}
               logMap={logMap}

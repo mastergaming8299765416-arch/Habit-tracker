@@ -11,7 +11,7 @@ export default function StatsCards({ totalHabits, avgCompletion, bestDay, longes
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
       {cards.map((c) => (
-        <div key={c.label} className="bg-white border border-sand rounded-xl p-4 text-center">
+        <div key={c.label} className="bg-surface border border-sand rounded-xl p-4 text-center">
           <div className="text-2xl font-serif text-sage">{c.value}</div>
           <div className="text-xs text-ink/50 mt-1">{c.label}</div>
         </div>
